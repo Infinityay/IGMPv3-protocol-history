@@ -1,0 +1,81 @@
+user: reference format_name = ['IGMPv3 Membership Query']
+According to the upload files, format_name list, and your knowledge,provide a detailed description of all the fields in the specified 'format_name' message format separately. For fields with sub_fields, please detail their attributes in a similar manner under a "sub_fields" key.
+The return JSON should be as follows:
+```json 
+{"format_name":"xxxx",
+"fields":[{"name":"The complete name of each field","position":"the position from the beginning of the entire format","length":"The length of each field, indicating 'variable' if it's not fixed","unit":"bits for this binary protocol, chars if textual protocol"}]
+// additional fields or sub_fields information...
+// Do not expand abbreviations as a sub_fields key.
+}
+```
+Reply to me short and clear with json!
+
+
+assistant: ```json
+{
+  "format_name": "IGMPv3 Membership Query",
+  "fields": [
+    {
+      "name": "Type",
+      "position": "0-7",
+      "length": "8",
+      "unit": "bits"
+    },
+    {
+      "name": "Max Resp Code",
+      "position": "8-15",
+      "length": "8",
+      "unit": "bits"
+    },
+    {
+      "name": "Checksum",
+      "position": "16-31",
+      "length": "16",
+      "unit": "bits"
+    },
+    {
+      "name": "Group Address",
+      "position": "32-63",
+      "length": "32",
+      "unit": "bits"
+    },
+    {
+      "name": "Resv",
+      "position": "64-66",
+      "length": "3",
+      "unit": "bits"
+    },
+    {
+      "name": "S Flag (Suppress Router-Side Processing)",
+      "position": "67",
+      "length": "1",
+      "unit": "bits"
+    },
+    {
+      "name": "QRV (Querier's Robustness Variable)",
+      "position": "68-70",
+      "length": "3",
+      "unit": "bits"
+    },
+    {
+      "name": "QQIC (Querier's Query Interval Code)",
+      "position": "71-79",
+      "length": "8",
+      "unit": "bits"
+    },
+    {
+      "name": "Number of Sources (N)",
+      "position": "80-95",
+      "length": "16",
+      "unit": "bits"
+    },
+    {
+      "name": "Source Address [1] - [N]",
+      "position": "96 onwards",
+      "length": "variable, depends on N",
+      "unit": "bits"
+    }
+  ]
+}
+```
+

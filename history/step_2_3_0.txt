@@ -1,0 +1,106 @@
+user: 
+Based on the information about the fields provided, along with any uploaded files and your existing knowledge, provide detailed information about these fields. 
+The response should be in a compressed JSON format as illustrated below:
+```json
+[
+  {
+    'name': 'The name of the field',
+    'has_sub_field': 'Indicates whether this field has a sub-field of another (true/false), if it is true, add "sub-fields" key',
+    'data_type': 'The basic data type of the field (e.g., \"signed integer\", \"unsigned integer\", \"float\", \"bool\", \"string\", etc.).',
+    'value_type': 'The nature of the field's value (e.g., \"static value\", \"range value\", \"finite optional value\", \"random value\", \"special (generated from specific algorithms or checksum procedure)\", etc.).',
+    'values': 'Depending on value_type, this could be a range (e.g., \"0-65535\"), a list (e.g., \"[0, 1, 2]\" or \"[true, false]\"), a specific value, an algorithm name for \"special\", or \"null\" for payload/data fields, etc.',
+    'semantic': 'A brief description of what the field represents or is used for.'
+  }
+  // additional fields or sub-fields information...
+]
+```
+Reply to me short and clear with json! 
+
+ fields information:
+[{'format_name': 'IGMPv3 Membership Query', 'fields': [{'name': 'Type', 'position': '0-7', 'length': '8', 'unit': 'bits'}, {'name': 'Max Resp Code', 'position': '8-15', 'length': '8', 'unit': 'bits'}, {'name': 'Checksum', 'position': '16-31', 'length': '16', 'unit': 'bits'}, {'name': 'Group Address', 'position': '32-63', 'length': '32', 'unit': 'bits'}, {'name': 'Resv', 'position': '64-66', 'length': '3', 'unit': 'bits'}, {'name': 'S Flag (Suppress Router-Side Processing)', 'position': '67', 'length': '1', 'unit': 'bits'}, {'name': "QRV (Querier's Robustness Variable)", 'position': '68-70', 'length': '3', 'unit': 'bits'}, {'name': "QQIC (Querier's Query Interval Code)", 'position': '71-79', 'length': '8', 'unit': 'bits'}, {'name': 'Number of Sources (N)', 'position': '80-95', 'length': '16', 'unit': 'bits'}, {'name': 'Source Address [1] - [N]', 'position': '96 onwards', 'length': 'variable, depends on N', 'unit': 'bits'}]}]
+
+assistant: ```json
+[
+  {
+    "name": "Type",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "[0x11, 0x22]",  // Example Hexadecimal values representing different types
+    "semantic": "Specifies the type of IGMP message."
+  },
+  {
+    "name": "Max Resp Code",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0-255",
+    "semantic": "Maximum time allowed before sending a responding query."
+  },
+  {
+    "name": "Checksum",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "special",
+    "values": "checksum algorithm",
+    "semantic": "Checksum for error-checking of the header and data."
+  },
+  {
+    "name": "Group Address",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0.0.0.0-255.255.255.255",
+    "semantic": "IP address of the group for which the query is intended."
+  },
+  {
+    "name": "Resv",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0",
+    "semantic": "Reserved bits, set to 0."
+  },
+  {
+    "name": "S Flag (Suppress Router-Side Processing)",
+    "has_sub_field": "false",
+    "data_type": "bool",
+    "value_type": "finite optional value",
+    "values": "[true, false]",
+    "semantic": "Indicates if report suppression is enabled."
+  },
+  {
+    "name": "QRV (Querier's Robustness Variable)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "0-7",
+    "semantic": "Number of additional times a group record is queried over the interval."
+  },
+  {
+    "name": "QQIC (Querier's Query Interval Code)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "0-255",
+    "semantic": "Query interval used by the Querier."
+  },
+  {
+    "name": "Number of Sources (N)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "range value",
+    "values": "0-65535",
+    "semantic": "Specifies the number of source addresses present in the query."
+  },
+  {
+    "name": "Source Address [1] - [N]",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "range value",
+    "values": "Variable, depends on 'N'",
+    "semantic": "List of source IP addresses applicable to the query."
+  }
+]
+```
+

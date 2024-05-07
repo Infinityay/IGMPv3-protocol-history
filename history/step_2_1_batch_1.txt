@@ -1,0 +1,96 @@
+user: reference format_name = ['Version 3 Membership Report']
+According to the upload files, format_name list, and your knowledge,provide a detailed description of all the fields in the specified 'format_name' message format separately. For fields with sub_fields, please detail their attributes in a similar manner under a "sub_fields" key.
+The return JSON should be as follows:
+```json 
+{"format_name":"xxxx",
+"fields":[{"name":"The complete name of each field","position":"the position from the beginning of the entire format","length":"The length of each field, indicating 'variable' if it's not fixed","unit":"bits for this binary protocol, chars if textual protocol"}]
+// additional fields or sub_fields information...
+// Do not expand abbreviations as a sub_fields key.
+}
+```
+Reply to me short and clear with json!
+
+
+assistant: ```json
+{
+  "format_name": "Version 3 Membership Report",
+  "fields": [
+    {
+      "name": "Type",
+      "position": "0",
+      "length": "8",
+      "unit": "bits"
+    },
+    {
+      "name": "Reserved",
+      "position": "8",
+      "length": "8",
+      "unit": "bits"
+    },
+    {
+      "name": "Checksum",
+      "position": "16",
+      "length": "16",
+      "unit": "bits"
+    },
+    {
+      "name": "Reserved",
+      "position": "32",
+      "length": "16",
+      "unit": "bits"
+    },
+    {
+      "name": "Number of Group Records (M)",
+      "position": "48",
+      "length": "16",
+      "unit": "bits"
+    },
+    {
+      "name": "Group Record",
+      "position": "64",
+      "length": "variable",
+      "unit": "bits",
+      "sub_fields": [
+        {
+          "name": "Record Type",
+          "position": "0",
+          "length": "8",
+          "unit": "bits"
+        },
+        {
+          "name": "Aux Data Len",
+          "position": "8",
+          "length": "8",
+          "unit": "bits"
+        },
+        {
+          "name": "Number of Sources (N)",
+          "position": "16",
+          "length": "16",
+          "unit": "bits"
+        },
+        {
+          "name": "Multicast Address",
+          "position": "32",
+          "length": "32",
+          "unit": "bits"
+        },
+        {
+          "name": "Source Address [i]",
+          "position": "64",
+          "length": "32",
+          "unit": "bits",
+          "repeated_field": true
+        },
+        {
+          "name": "Auxiliary Data",
+          "position": "variable",
+          "length": "variable",
+          "unit": "bits"
+        }
+      ]
+    }
+  ]
+}
+```
+

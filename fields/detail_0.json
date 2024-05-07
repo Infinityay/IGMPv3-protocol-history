@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Type",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "[0x11, 0x22]",
+    "semantic": "Specifies the type of IGMP message."
+  },
+  {
+    "name": "Max Resp Code",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0-255",
+    "semantic": "Maximum time allowed before sending a responding query."
+  },
+  {
+    "name": "Checksum",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "special",
+    "values": "checksum algorithm",
+    "semantic": "Checksum for error-checking of the header and data."
+  },
+  {
+    "name": "Group Address",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0.0.0.0-255.255.255.255",
+    "semantic": "IP address of the group for which the query is intended."
+  },
+  {
+    "name": "Resv",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "static value",
+    "values": "0",
+    "semantic": "Reserved bits, set to 0."
+  },
+  {
+    "name": "S Flag (Suppress Router-Side Processing)",
+    "has_sub_field": "false",
+    "data_type": "bool",
+    "value_type": "finite optional value",
+    "values": "[true, false]",
+    "semantic": "Indicates if report suppression is enabled."
+  },
+  {
+    "name": "QRV (Querier's Robustness Variable)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "0-7",
+    "semantic": "Number of additional times a group record is queried over the interval."
+  },
+  {
+    "name": "QQIC (Querier's Query Interval Code)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "finite optional value",
+    "values": "0-255",
+    "semantic": "Query interval used by the Querier."
+  },
+  {
+    "name": "Number of Sources (N)",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "range value",
+    "values": "0-65535",
+    "semantic": "Specifies the number of source addresses present in the query."
+  },
+  {
+    "name": "Source Address [1] - [N]",
+    "has_sub_field": "false",
+    "data_type": "unsigned integer",
+    "value_type": "range value",
+    "values": "Variable, depends on 'N'",
+    "semantic": "List of source IP addresses applicable to the query."
+  }
+]

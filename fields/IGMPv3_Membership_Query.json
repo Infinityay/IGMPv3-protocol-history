@@ -1,0 +1,65 @@
+{
+    "format_name": "IGMPv3 Membership Query",
+    "fields": [
+        {
+            "name": "Type",
+            "position": "0-7",
+            "length": "8",
+            "unit": "bits"
+        },
+        {
+            "name": "Max Resp Code",
+            "position": "8-15",
+            "length": "8",
+            "unit": "bits"
+        },
+        {
+            "name": "Checksum",
+            "position": "16-31",
+            "length": "16",
+            "unit": "bits"
+        },
+        {
+            "name": "Group Address",
+            "position": "32-63",
+            "length": "32",
+            "unit": "bits"
+        },
+        {
+            "name": "Resv",
+            "position": "64-66",
+            "length": "3",
+            "unit": "bits"
+        },
+        {
+            "name": "S Flag (Suppress Router-Side Processing)",
+            "position": "67",
+            "length": "1",
+            "unit": "bits"
+        },
+        {
+            "name": "QRV (Querier's Robustness Variable)",
+            "position": "68-70",
+            "length": "3",
+            "unit": "bits"
+        },
+        {
+            "name": "QQIC (Querier's Query Interval Code)",
+            "position": "71-79",
+            "length": "8",
+            "unit": "bits"
+        },
+        {
+            "name": "Number of Sources (N)",
+            "position": "80-95",
+            "length": "16",
+            "unit": "bits"
+        },
+        {
+            "name": "Source Address [1] - [N]",
+            "position": "96 onwards",
+            "length": "variable, depends on N",
+            "unit": "bits"
+        }
+    ]
+}

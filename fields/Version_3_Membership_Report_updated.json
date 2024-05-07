@@ -1,0 +1,140 @@
+{
+    "format_name": "Version 3 Membership Report",
+    "fields": [
+        {
+            "name": "Type",
+            "position": "0",
+            "length": "8",
+            "unit": "bits",
+            "has_sub_field": "false",
+            "data_type": "unsigned integer",
+            "value_type": "finite optional value",
+            "values": "[0x22]",
+            "semantic": "Identifies the message as a Version 3 Membership Report in IGMP."
+        },
+        {
+            "name": "Reserved",
+            "position": "8",
+            "length": "8",
+            "unit": "bits",
+            "has_sub_field": "false",
+            "data_type": "unsigned integer",
+            "value_type": "static value",
+            "values": "0",
+            "semantic": "Reserved field, must be zeroed."
+        },
+        {
+            "name": "Checksum",
+            "position": "16",
+            "length": "16",
+            "unit": "bits",
+            "has_sub_field": "false",
+            "data_type": "unsigned integer",
+            "value_type": "special",
+            "values": "checksum algorithm",
+            "semantic": "Used for error-checking of the IGMP message."
+        },
+        {
+            "name": "Reserved",
+            "position": "32",
+            "length": "16",
+            "unit": "bits",
+            "has_sub_field": "false",
+            "data_type": "unsigned integer",
+            "value_type": "static value",
+            "values": "0",
+            "semantic": "Reserved field, must be zeroed."
+        },
+        {
+            "name": "Number of Group Records (M)",
+            "position": "48",
+            "length": "16",
+            "unit": "bits",
+            "has_sub_field": "false",
+            "data_type": "unsigned integer",
+            "value_type": "range value",
+            "values": "0-65535",
+            "semantic": "Specifies the number of group records in this IGMP message."
+        },
+        {
+            "name": "Group Record",
+            "position": "64",
+            "length": "variable",
+            "unit": "bits",
+            "sub_fields": [
+                {
+                    "name": "Record Type",
+                    "position": "0",
+                    "length": "8",
+                    "unit": "bits",
+                    "has_sub_field": "false",
+                    "data_type": "unsigned integer",
+                    "value_type": "finite optional value",
+                    "values": "[1, 2, 3, 4, 5]",
+                    "semantic": "Defines the type of record, such as mode change, new sources, etc."
+                },
+                {
+                    "name": "Aux Data Len",
+                    "position": "8",
+                    "length": "8",
+                    "unit": "bits",
+                    "has_sub_field": "false",
+                    "data_type": "unsigned integer",
+                    "value_type": "range value",
+                    "values": "0-255",
+                    "semantic": "Length of the Auxiliary Data field in units of 32-bit words."
+                },
+                {
+                    "name": "Number of Sources (N)",
+                    "position": "16",
+                    "length": "16",
+                    "unit": "bits",
+                    "has_sub_field": "false",
+                    "data_type": "unsigned integer",
+                    "value_type": "range value",
+                    "values": "0-65535",
+                    "semantic": "Number of source addresses present in this record."
+                },
+                {
+                    "name": "Multicast Address",
+                    "position": "32",
+                    "length": "32",
+                    "unit": "bits",
+                    "has_sub_field": "false",
+                    "data_type": "binary address",
+                    "value_type": "specific value",
+                    "values": "IP address",
+                    "semantic": "The IP multicast address to which this record pertains."
+                },
+                {
+                    "name": "Source Address [i]",
+                    "position": "64",
+                    "length": "32",
+                    "unit": "bits",
+                    "repeated_field": true,
+                    "has_sub_field": "false",
+                    "data_type": "binary address",
+                    "value_type": "specific value",
+                    "values": "IP address",
+                    "semantic": "List of source addresses (can be multiple) that this record reports."
+                },
+                {
+                    "name": "Auxiliary Data",
+                    "position": "variable",
+                    "length": "variable",
+                    "unit": "bits",
+                    "has_sub_field": "false",
+                    "data_type": "unsigned integer",
+                    "value_type": "optional",
+                    "values": "variable",
+                    "semantic": "Optional additional data, variable in length."
+                }
+            ],
+            "has_sub_field": "true",
+            "data_type": "collection",
+            "value_type": "variable structure",
+            "values": "variable",
+            "semantic": "Detailed information about host group records, can contain multiple subrecords."
+        }
+    ]
+}

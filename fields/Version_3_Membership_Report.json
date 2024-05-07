@@ -1,0 +1,80 @@
+{
+    "format_name": "Version 3 Membership Report",
+    "fields": [
+        {
+            "name": "Type",
+            "position": "0",
+            "length": "8",
+            "unit": "bits"
+        },
+        {
+            "name": "Reserved",
+            "position": "8",
+            "length": "8",
+            "unit": "bits"
+        },
+        {
+            "name": "Checksum",
+            "position": "16",
+            "length": "16",
+            "unit": "bits"
+        },
+        {
+            "name": "Reserved",
+            "position": "32",
+            "length": "16",
+            "unit": "bits"
+        },
+        {
+            "name": "Number of Group Records (M)",
+            "position": "48",
+            "length": "16",
+            "unit": "bits"
+        },
+        {
+            "name": "Group Record",
+            "position": "64",
+            "length": "variable",
+            "unit": "bits",
+            "sub_fields": [
+                {
+                    "name": "Record Type",
+                    "position": "0",
+                    "length": "8",
+                    "unit": "bits"
+                },
+                {
+                    "name": "Aux Data Len",
+                    "position": "8",
+                    "length": "8",
+                    "unit": "bits"
+                },
+                {
+                    "name": "Number of Sources (N)",
+                    "position": "16",
+                    "length": "16",
+                    "unit": "bits"
+                },
+                {
+                    "name": "Multicast Address",
+                    "position": "32",
+                    "length": "32",
+                    "unit": "bits"
+                },
+                {
+                    "name": "Source Address [i]",
+                    "position": "64",
+                    "length": "32",
+                    "unit": "bits",
+                    "repeated_field": true
+                },
+                {
+                    "name": "Auxiliary Data",
+                    "position": "variable",
+                    "length": "variable",
+                    "unit": "bits"
+                }
+            ]
+        }
+    ]
+}

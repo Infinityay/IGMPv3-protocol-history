@@ -1,0 +1,100 @@
+[
+    {
+        "name": "Type",
+        "has_sub_field": "false",
+        "data_type": "unsigned integer",
+        "value_type": "finite optional value",
+        "values": "[0x22]",
+        "semantic": "Identifies the message as a Version 3 Membership Report in IGMP."
+    },
+    {
+        "name": "Reserved",
+        "has_sub_field": "false",
+        "data_type": "unsigned integer",
+        "value_type": "static value",
+        "values": "0",
+        "semantic": "Reserved bits, must be set to zero."
+    },
+    {
+        "name": "Checksum",
+        "has_sub_field": "false",
+        "data_type": "unsigned integer",
+        "value_type": "special",
+        "values": "checksum algorithm",
+        "semantic": "Used for error-checking of the IGMP message."
+    },
+    {
+        "name": "Reserved",
+        "has_sub_field": "false",
+        "data_type": "unsigned integer",
+        "value_type": "static value",
+        "values": "0",
+        "semantic": "Reserved field, must be zeroed."
+    },
+    {
+        "name": "Number of Group Records (M)",
+        "has_sub_field": "false",
+        "data_type": "unsigned integer",
+        "value_type": "range value",
+        "values": "0-65535",
+        "semantic": "Specifies the number of group records in this IGMP message."
+    },
+    {
+        "name": "Group Record",
+        "has_sub_field": "true",
+        "sub_fields": [
+            {
+                "name": "Record Type",
+                "has_sub_field": "false",
+                "data_type": "unsigned integer",
+                "value_type": "finite optional value",
+                "values": "[1, 2, 3, 4, 5]",
+                "semantic": "Defines the type of record, such as mode change, new sources, etc."
+            },
+            {
+                "name": "Aux Data Len",
+                "has_sub_field": "false",
+                "data_type": "unsigned integer",
+                "value_type": "range value",
+                "values": "0-255",
+                "semantic": "Length of the Auxiliary Data field in units of 32-bit words."
+            },
+            {
+                "name": "Number of Sources (N)",
+                "has_sub_field": "false",
+                "data_type": "unsigned integer",
+                "value_type": "range value",
+                "values": "0-65535",
+                "semantic": "Number of source addresses present in this record."
+            },
+            {
+                "name": "Multicast Address",
+                "has_sub_field": "false",
+                "data_type": "binary address",
+                "value_type": "specific value",
+                "values": "IP address",
+                "semantic": "The IP multicast address to which this record pertains."
+            },
+            {
+                "name": "Source Address [i]",
+                "has_sub_field": "false",
+                "data_type": "binary address",
+                "value_type": "specific value",
+                "values": "IP address",
+                "semantic": "List of source addresses (can be multiple) that this record reports."
+            },
+            {
+                "name": "Auxiliary Data",
+                "has_sub_field": "false",
+                "data_type": "unsigned integer",
+                "value_type": "optional",
+                "values": "variable",
+                "semantic": "Optional additional data, variable in length."
+            }
+        ],
+        "data_type": "collection",
+        "value_type": "variable structure",
+        "values": "variable",
+        "semantic": "Detailed information about host group records, can contain multiple subrecords."
+    }
+]

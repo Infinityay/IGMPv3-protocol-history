@@ -1,0 +1,47 @@
+user: Focus on protocol name = IGMPv3
+
+List all message format(s) on the protocol based on the upload file and your knowledge. If there only exists one format, just named as protocolName format. You should respond as follows:
+```json
+    {{"protocol_name":"{protocolName}","message_formats":[{{"format_name":"name of the format"}}]}}
+```
+Reply to me short and clear with json!
+
+assistant: ```json
+{
+    "protocol_name": "IGMPv3",
+    "message_formats": [
+        {"format_name": "IGMPv3 format"}
+    ]
+}
+```
+
+user: Focus on protocol name = IGMPv3
+
+Please evaluate our previously discussed message formats for compliance with the latest protocol standards. Identify any formats that are outdated and exclude them. Then, provide the updated JSON for the merged format(s).
+Reply to me short and clear with json!
+
+assistant: ```json
+{
+    "protocol_name": "IGMPv3",
+    "message_formats": [
+        {"format_name": "IGMPv3 Membership Query"},
+        {"format_name": "Version 3 Membership Report"}
+    ]
+}
+```
+
+user: Focus on protocol name = IGMPv3
+
+If the message_format you provided contains formats such as extension headers, options, other protocol's message format, etc.Remove them and provide the updated Json.
+Reply to me short and clear with json!
+
+assistant: ```json
+{
+    "protocol_name": "IGMPv3",
+    "message_formats": [
+        {"format_name": "IGMPv3 Membership Query"},
+        {"format_name": "Version 3 Membership Report"}
+    ]
+}
+```
+

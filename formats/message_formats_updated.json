@@ -1,0 +1,11 @@
+{
+    "protocol_name": "IGMPv3",
+    "message_formats": [
+        {
+            "format_name": "IGMPv3 Membership Query"
+        },
+        {
+            "format_name": "Version 3 Membership Report"
+        }
+    ]
+}
